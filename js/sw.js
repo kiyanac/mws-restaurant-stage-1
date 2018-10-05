@@ -2,7 +2,6 @@ console.log('Service Worker up');
 
 const cachedFiles = [
   '/',
-  '/mws-restaurant-stage-1-master',
   '/index.html',
   '/restaurant.html',
   '/js/main.js',
@@ -34,11 +33,9 @@ self.addEventListener('fetch', function(e) {
   e.respondWith(
     caches.match(e.request).then(function(response) {
       if(response) {
-        console.log(e.request 'in cache');
         return response;
       }
       else {
-        console.log('Fetching' e.request);
         return fetch(e.request)
         .then(function(response) {
           const clone = response.clone();
